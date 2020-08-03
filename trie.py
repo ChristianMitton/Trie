@@ -37,12 +37,6 @@ print(trie.children)
 print(trie.contains('boat'))
 
 
-# If you just used the 'in' method with arrays instead of using a trie, 
-# lookup would be o(n*k) where n is the length of the array, and k the lenghth of the longest string.
-# If you used a trie, lookup would be o(k) where k is the length of the longest string
-
-
-
 
 
 
