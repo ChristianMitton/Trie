@@ -1,45 +1,36 @@
 class Trie:
-	def __init__(self):				
-		children = {'*': False}
-	
-	def addWord(self, word):		
-		for letter in word:
-			children = self.children
-			if letter in children:
-				children = children[letter]
-			else:
-				children[letter] = {'*' = False}
-				children = children[letter]
-		children['*'] = True
+    def __init__(self):        
+        self.dictionary = {}
 
-	def contains(self, word):
-        children = self.children        
-        for l in range(len(word)):
-            letter = word[l]
-
-            if letter in children:                
-                children = children[letter]
+    def addWord(self, word):
+        ptr = self.dictionary
+        for c in word:
+            ptr[c] = {'*': False}
+            ptr = ptr[c]
+        
+        ptr['*'] = True
+    
+    def contains(self, word):
+        ptr = self.dictionary
+        for c in word:
+            if c in ptr:
+                ptr = ptr[c]
             else:
-                return False   
+                return False
 
-            if l == len(word)-1:
-				return True if children['*'] == True else False                
-
+        return True if ptr['*'] == True else False            
+        
+    
 trie = Trie()
 
+trie.addWord('luffy')
+trie.addWord('nami')
+trie.addWord('zoro')
+trie.addWord('sanji')
 
-trie.addWord('words')
-trie.addWord('wapol')
-trie.addWord('boat')
+print(trie.dictionary)
 
-print(trie.children)
+print(trie.contains('luffy'))
+print(trie.contains('luff'))
+print(trie.contains('luffyy'))
 
-print(trie.contains('boat'))
-
-
-
-
-
-
-
-	
